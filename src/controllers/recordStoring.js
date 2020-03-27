@@ -28,9 +28,8 @@ class RecordStoreController {
 			)
 			.then(function(response) {
 				var validToken = response.data.idToken;
-				console.log(response.data.idToken);
 				axios.post(
-					"https://firestore.googleapis.com/v1/projects/storage-ce335/databases/(default)/documents/record/?documentId=testDoc",
+					"https://firestore.googleapis.com/v1/projects/storage-ce335/databases/(default)/documents/record/",
 					{
 						fields: {
 							location: {
