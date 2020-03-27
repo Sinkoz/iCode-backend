@@ -26,7 +26,7 @@ var Records = {
 			exports: {
 				add: function(record) {
 					console.log("adding");
-					var path = "storage/" + record.id;
+					var path = "/contact-storage/" + record.id;
 					return privateClient
 						.storeObject("record", path, record)
 						.then(function() {
