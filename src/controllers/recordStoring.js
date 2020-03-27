@@ -17,7 +17,7 @@ class RecordStoreController {
 
 		var time = datetime.format("HH:mm");
 
-		var nameId = name + time;
+		var nameId = name + " " + time.toString();
 
 		var url =
 			"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
