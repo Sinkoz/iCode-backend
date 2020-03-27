@@ -1,30 +1,31 @@
 // CONTROLLER TO TEST THAT ROUTING IS WORKING
+const axios = require("axios");
+const firebase = require("firebase");
 class PingController {
 	static ping(req, res) {
 		/*
-		var client = remoteStorage.scope("/contact-storage/");
-		client.getListing("").then(listing => console.log(listing));
+		axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB9M3UQ1lkZ-MDv5ZeK3NjGIvmVZ_SLiKE",
+		{
+			"email":"xinchen.zhu94@gmail.com",
+			"password":"@Test123",
+			"returnSecureToken":true
+		})
+		.then(function(response){
+			console.log(response);
+		})
+		.catch(function(error){
 
-		// Write some text to "foo/bar.txt"
-		const content = "The most simple things can bring the most happiness.";
-		client
-			.storeFile("text/plain", "bar.txt", content)
-			.then(() => console.log("data has been saved"));
+		})
+		*/
 
-		remoteStorage.dropbox.connect("/contact-storage");
-		remoteStorage.dropbox.get("/contact-storage", function(req, res) {
-			console.log(req);
-			console.log(res);
-		});*/
+		var app = firebase.initializeApp({
+			apiKey: "AIzaSyB9M3UQ1lkZ-MDv5ZeK3NjGIvmVZ_SLiKE",
+			projectId: "storage-ce335"
+		});
+		var db = app.firestore();
 
-		/*	  
-		remoteStorage.records.add({
-			id : "1",
-			name: "Xinchen",
-			email: "test@gmail.com",
-			number: "12345678",
-			location: "Home"
-		})*/
+		db.collections("record");
+
 		return res.status(200).json({
 			message: "PONG"
 		});

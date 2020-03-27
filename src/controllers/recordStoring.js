@@ -1,6 +1,6 @@
 // CONTROLLER TO TEST THAT ROUTING IS WORKING
-const firebaseDB = require("../../firebase/firebase");
-const firebase = require("firebase-admin");
+const axios = require("axios");
+
 var moment = require("moment-timezone");
 
 class RecordStoreController {
@@ -9,6 +9,7 @@ class RecordStoreController {
 
 		var location = body["location"];
 		var email = body["email"];
+		var name = body["name"];
 
 		var datetime = moment().tz("Asia/Singapore");
 
@@ -16,31 +17,44 @@ class RecordStoreController {
 
 		var time = datetime.format("HH:mm");
 
-		var collection = firebaseDB.collection("record");
-		var docRef = collection.doc(date);
+		axios
+			.post(
+				"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB9M3UQ1lkZ-MDv5ZeK3NjGIvmVZ_SLiKE",
+				{
+					email: "xinchen.zhu94@gmail.com",
+					password: "@Test123",
+					returnSecureToken: true
+				}
+			)
+			.then(function(response) {
+				console.log(response);
+			})
+			.catch(function(error) {});
 
-		docRef.get().then(function(snapshot) {
-			if (snapshot.exists) {
-				docRef.update({
-					records: firebase.firestore.FieldValue.arrayUnion({
-						location: location,
-						email: email,
-						time: time
-					})
-				});
-			} else {
-				docRef.set({
-					records: [
-						{
-							location: location,
-							email: email,
-							time: time
-						}
-					]
-				});
+		axios.post(
+			"https://firestore.googleapis.com/v1/projects/storage-ce335/databases/(default)/documents/record/?documentId=testDoc",
+			{
+				fields: {
+					location: {
+						stringValue: location
+					},
+					email: {
+						stringValue: email
+					},
+					date: {
+						stringValue: date
+					},
+					time: {
+						stringValue: time
+					}
+				}
+			},
+			{
+				params: {
+					documentId: name
+				}
 			}
-		});
-
+		);
 		return res.status(200).json({
 			message: "Successfully Stored"
 		});
