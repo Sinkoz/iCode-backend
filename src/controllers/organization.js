@@ -1,6 +1,3 @@
-const firebaseDB = require("../../firebase/firebase");
-const firebase = require("firebase-admin");
-
 class OrganizationController {
 	static getAll(req, res) {
 		let result = [];
