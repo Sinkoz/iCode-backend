@@ -1,5 +1,6 @@
 // CONTROLLER TO TEST THAT ROUTING IS WORKING
 const firebaseDB = require("../../firebase/firebase");
+var moment = require("moment-timezone");
 
 class RecordStoreController {
 	static store(req, res) {
@@ -8,12 +9,17 @@ class RecordStoreController {
 		var location = body["location"];
 		var email = body["email"];
 
-		var date = new Date().toLocaleDateString;
+		var datetime = moment().tz("Asia/Singapore");
 
-		var docRef = firebaseDB.collection("record").doc("test");
+		var date = datetime.format("DD-MM-YYYY");
+
+		var time = datetime.format("HH:mm");
+
+		var docRef = firebaseDB.collection("record").doc(date);
 		docRef.set({
 			location: location,
-			email: email
+			email: email,
+			time: time
 		});
 
 		return res.status(200).json({
