@@ -17,6 +17,8 @@ class RecordStoreController {
 
 		var time = datetime.format("HH:mm");
 
+		var nameId = name + time;
+
 		var url =
 			"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
 			process.env.FIREBASE_API_KEY;
@@ -52,7 +54,7 @@ class RecordStoreController {
 							Authorization: "Bearer " + validToken
 						},
 						params: {
-							documentId: name
+							documentId: nameId
 						}
 					}
 				);
