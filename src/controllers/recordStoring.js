@@ -27,34 +27,38 @@ class RecordStoreController {
 				}
 			)
 			.then(function(response) {
-				console.log(response);
+				var validToken = response.data.idToken;
+				console.log(response.data.idToken);
+				axios.post(
+					"https://firestore.googleapis.com/v1/projects/storage-ce335/databases/(default)/documents/record/?documentId=testDoc",
+					{
+						fields: {
+							location: {
+								stringValue: location
+							},
+							email: {
+								stringValue: email
+							},
+							date: {
+								stringValue: date
+							},
+							time: {
+								stringValue: time
+							}
+						}
+					},
+					{
+						headers: {
+							Authorization: "Bearer " + validToken
+						},
+						params: {
+							documentId: name
+						}
+					}
+				);
 			})
 			.catch(function(error) {});
 
-		axios.post(
-			"https://firestore.googleapis.com/v1/projects/storage-ce335/databases/(default)/documents/record/?documentId=testDoc",
-			{
-				fields: {
-					location: {
-						stringValue: location
-					},
-					email: {
-						stringValue: email
-					},
-					date: {
-						stringValue: date
-					},
-					time: {
-						stringValue: time
-					}
-				}
-			},
-			{
-				params: {
-					documentId: name
-				}
-			}
-		);
 		return res.status(200).json({
 			message: "Successfully Stored"
 		});
