@@ -1,7 +1,7 @@
 const Ping = require("./ping");
-const Auth0 = require("./Auth0");
+const recordStore = require("./recordStoring");
 
 module.exports = {
 	Ping,
-	Auth0
+	recordStore
 };

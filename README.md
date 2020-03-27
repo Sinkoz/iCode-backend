@@ -1,4 +1,4 @@
-# HOGC One API
+# iCode backend
 
 HOGC One API is a `Node.js API` that helps to support the new HOGC One Mobile
 App
@@ -20,7 +20,7 @@ Before you begin, ensure you have met the following requirements:
 
 Use nvm and yvm to change versions. Take a look at `.yvmrc` and `.nvmrc`
 
-## Installing HOGC One API
+## Installing iCode backend
 
 To install HOGC One API, follow these steps:
 
@@ -36,7 +36,7 @@ Windows:
 yarn install
 ```
 
-## Developing on HOGC One API
+## Developing on iCode backend
 
 To develop on HOGC One API, follow these steps:
 

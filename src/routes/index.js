@@ -1,6 +1,6 @@
 const Router = require("express").Router;
 const ping = require("./ping");
-const Auth0 = require("./Auth0");
+const recordStore = require("./recordStoring");
 
 const router = Router();
 const loggerFormat =
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV !== "production") {
 
 // ----- ROUTING TABLE STARTS -----
 router.use(ping);
-router.use(Auth0);
+router.use(recordStore);
 // ----- ROUTING TABLE ENDS -----
 
 module.exports = router;

@@ -1,7 +1,7 @@
 // CONTROLLER TO TEST THAT ROUTING IS WORKING
-const remoteStorage = require("../../remoteStorage/remoteStorage");
 class PingController {
 	static ping(req, res) {
+		/*
 		var client = remoteStorage.scope("/contact-storage/");
 		client.getListing("").then(listing => console.log(listing));
 
@@ -15,7 +15,7 @@ class PingController {
 		remoteStorage.dropbox.get("/contact-storage", function(req, res) {
 			console.log(req);
 			console.log(res);
-		});
+		});*/
 
 		/*	  
 		remoteStorage.records.add({
