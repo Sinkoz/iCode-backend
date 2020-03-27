@@ -17,15 +17,16 @@ class RecordStoreController {
 
 		var time = datetime.format("HH:mm");
 
+		var url =
+			"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+			process.env.FIREBASE_API_KEY;
+
 		axios
-			.post(
-				"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB9M3UQ1lkZ-MDv5ZeK3NjGIvmVZ_SLiKE",
-				{
-					email: "xinchen.zhu94@gmail.com",
-					password: "@Test123",
-					returnSecureToken: true
-				}
-			)
+			.post(url, {
+				email: process.env.FIREBASE_EMAIL,
+				password: process.env.FIREBASE_PASSWORD,
+				returnSecureToken: true
+			})
 			.then(function(response) {
 				var validToken = response.data.idToken;
 				axios.post(
