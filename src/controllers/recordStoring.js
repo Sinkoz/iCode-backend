@@ -1,5 +1,6 @@
 // CONTROLLER TO TEST THAT ROUTING IS WORKING
 const axios = require("axios");
+const dropBoxApi = require("../../dropBoxApi/dropBoxApi");
 
 var moment = require("moment-timezone");
 
@@ -10,6 +11,7 @@ class RecordStoreController {
 		var location = body["location"];
 		var email = body["email"];
 		var name = body["name"];
+		var phone = body["phone"];
 
 		var datetime = moment().tz("Asia/Singapore");
 
@@ -17,8 +19,18 @@ class RecordStoreController {
 
 		var time = datetime.format("HH:mm");
 
-		var nameId = name + " " + time.toString();
+		var record = {
+			name: name,
+			location: location,
+			email: email,
+			phone: phone,
+			date: date,
+			time: time
+		};
 
+		dropBoxApi.addEntry(process.env.DROPBOXAPIKEY, record);
+
+		/*
 		var url =
 			"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
 			process.env.FIREBASE_API_KEY;
@@ -60,6 +72,7 @@ class RecordStoreController {
 				);
 			})
 			.catch(function(error) {});
+			*/
 
 		return res.status(200).json({
 			message: "Successfully Stored"
