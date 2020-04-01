@@ -12,6 +12,7 @@ class RecordStoreController {
 		var email = body["email"];
 		var name = body["name"];
 		var phone = body["phone"];
+		var submissionId = body["submissionId"];
 
 		var datetime = moment().tz("Asia/Singapore");
 
@@ -24,6 +25,7 @@ class RecordStoreController {
 			location: location,
 			email: email,
 			phone: phone,
+			submissionId: submissionId,
 			date: date,
 			time: time
 		};

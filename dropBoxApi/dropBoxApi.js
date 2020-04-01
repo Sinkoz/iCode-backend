@@ -9,7 +9,10 @@ class dropBoxAPI {
 		var phone = record.phone;
 		var date = record.date;
 		var time = record.time;
+		var submissionId = record.submissionId;
 		var entry =
+			submissionId +
+			"," +
 			name +
 			"," +
 			location +
