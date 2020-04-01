@@ -1,3 +1,4 @@
+const firebaseDB = require("../../firebase/firebaseApi");
 class OrganizationController {
 	static getAll(req, res) {
 		let result = [];
