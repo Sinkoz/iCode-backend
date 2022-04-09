@@ -22,7 +22,7 @@
 		"firebase": "^7.13.0",
 		"firebase-admin": "^8.10.0",
 		"knex": "0.20.11",
-		"moment": "^2.24.0",
+		"moment": "^2.29.2",
 		"moment-timezone": "^0.5.28",
 		"morgan": "^1.9.1",
 		"mysql2": "2.1.0",
